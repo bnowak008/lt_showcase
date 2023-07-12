@@ -1,7 +1,10 @@
 import { ReactNode } from "react";
+import Head from "next/head";
+import { Heebo } from 'next/font/google';
 
 import styled from '@emotion/styled';
-import Head from "next/head";
+
+const heebo = Heebo({ subsets: ['latin'] })
 
 export const MainLayout = ({ children }: { children: ReactNode }) => (
   <>
@@ -9,7 +12,7 @@ export const MainLayout = ({ children }: { children: ReactNode }) => (
       <title>LT Showcase</title>
       <link rel="icon" href="/favicon.ico" />
     </Head>
-    <Main>
+    <Main className={heebo.className}>
       {children}
     </Main>
   </>
