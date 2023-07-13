@@ -1,0 +1,41 @@
+{
+  "name": "@lt/nextjs",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "pnpm with-env next build",
+    "clean": "git clean -xdf .next .turbo node_modules",
+    "dev": "pnpm with-env next dev",
+    "lint": "dotenv -v SKIP_ENV_VALIDATION=1 next lint",
+    "lint:fix": "pnpm lint --fix",
+    "start": "pnpm with-env next start",
+    "type-check": "tsc --noEmit",
+    "with-env": "dotenv -e ../../.env --"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@lt/api": "^0.1.0",
+    "@splidejs/react-splide": "^0.7.12",
+    "@t3-oss/env-nextjs": "^0.3.1",
+    "@tanstack/react-query": "^4.29.5",
+    "@trpc/client": "^10.32.0",
+    "@trpc/next": "^10.32.0",
+    "@trpc/react-query": "^10.32.0",
+    "@trpc/server": "^10.32.0",
+    "next": "^13.4.9",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "superjson": "1.9.1",
+    "zod": "^3.21.4"
+  },
+  "devDependencies": {
+    "@lt/eslint-config": "^0.1.0",
+    "@types/node": "^18.16.5",
+    "@types/react": "^18.2.14",
+    "@types/react-dom": "^18.2.6",
+    "dotenv-cli": "^7.2.1",
+    "eslint": "^8.42.0",
+    "typescript": "^5.1.3"
+  }
+}
