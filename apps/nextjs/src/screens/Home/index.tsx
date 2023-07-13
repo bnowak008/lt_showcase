@@ -40,7 +40,8 @@ export const HomeScreen: NextPageWithLayout = () => {
                     {imagesQuery.data.map(image => (
                       <GalleryItem key={`image-${image.albumId}-${image.id}`}>
                         <Image src={image.thumbnailUrl} alt={`image-${image.id}`} width={150} height={150} />
-                        <GalleryItemText>Id: {image.id}</GalleryItemText>
+                        <GalleryItemText>({image.id})</GalleryItemText>
+                        <GalleryItemText>{image.title}</GalleryItemText>
                       </GalleryItem>
                     ))}
                   </>
@@ -65,11 +66,11 @@ const GalleryItem = styled.div({
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-  width: 175,
-  height: 190,
+  width: 200,
+  height: 225,
   margin: '1rem',
   boxShadow: 'rgba(0, 0, 0, 0.25) 0px 2px 8px',
   borderRadius: '.5rem',
   padding: '.5rem'
 });
-const GalleryItemText = styled.span({ marginTop: '1rem' })
+const GalleryItemText = styled.p({ fontSize: '.8rem', margin: 0 });

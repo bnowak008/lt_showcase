@@ -31,7 +31,7 @@ import { ZodError } from "zod";
  * - trpc's `createSSGHelpers` where we don't have req/res
  * @see https://create.t3.gg/en/usage/trpc#-servertrpccontextts
  */
-const createInnerTRPCContext = () => {
+export const createInnerTRPCContext = () => {
   return {};
 };
 

@@ -6,12 +6,12 @@ const defineConfig = (): ExpoConfig => ({
   scheme: "expo",
   version: "1.0.0",
   orientation: "portrait",
-  icon: "./assets/icon.png",
+  icon: "./assets/ltLogo_square.png",
   userInterfaceStyle: "light",
   splash: {
-    image: "./assets/icon.png",
+    image: "./assets/ltLogo_square.png",
     resizeMode: "contain",
-    backgroundColor: "#1F104A",
+    backgroundColor: "#fff",
   },
   updates: {
     fallbackToCacheTimeout: 0,
@@ -23,7 +23,7 @@ const defineConfig = (): ExpoConfig => ({
   },
   android: {
     adaptiveIcon: {
-      foregroundImage: "./assets/icon.png",
+      foregroundImage: "./assets/ltLogo_square.png",
       backgroundColor: "#1F104A",
     },
   },

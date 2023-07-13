@@ -1,11 +1,12 @@
 import { ZodError, z } from "zod";
 
-import { createTRPCRouter, publicProcedure } from "../trpc";
+import { createTRPCRouter, publicProcedure } from "../../trpc";
 import { TRPCError } from "@trpc/server";
 
 const RespData = z.array(z.object({
   albumId: z.number(),
   id: z.number(),
+  title: z.string(),
   url: z.string(),
   thumbnailUrl: z.string(),
 }));

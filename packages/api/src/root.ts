@@ -1,4 +1,4 @@
-import { imageRouter } from "./router/images";
+import { imageRouter } from "./routers/images";
 import { createTRPCRouter, publicProcedure } from "./trpc";
 
 export const appRouter = createTRPCRouter({
