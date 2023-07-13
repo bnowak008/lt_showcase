@@ -1,17 +1,13 @@
 import React, { useEffect } from "react";
-import { Button, Text, TextInput, TouchableOpacity, View, StyleSheet, FlatList, Dimensions } from "react-native";
+import { Dimensions, FlatList, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { Image } from "expo-image";
 import { Stack, useRouter } from "expo-router";
-import { Image } from 'expo-image';
-
-import { data } from "~/consts/data";
 
 import { api, type RouterOutputs } from "~/utils/api";
+import { data } from "~/consts/data";
 
-function ImageCard(props: {
-  image: RouterOutputs["images"]["byId"][number];
-  onTap: () => void;
-}) {
+function ImageCard(props: { image: RouterOutputs["images"]["byId"][number]; onTap: () => void }) {
   const router = useRouter();
 
   return (
@@ -26,9 +22,7 @@ function ImageCard(props: {
             transition={1000}
           />
           <Text>({props.image.id})</Text>
-          <Text>
-            {props.image.title}
-          </Text>
+          <Text>{props.image.title}</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -42,75 +36,68 @@ const Index = () => {
 
   useEffect(() => {
     if (imagesQuery.isFetching) {
-      console.log('fetching');
+      console.log("fetching");
     }
-    
+
     if (imagesQuery.data) {
       console.log(imagesQuery);
     }
-  }, [imagesQuery.isFetching])
+  }, [imagesQuery.isFetching]);
   return (
     <SafeAreaView style={styles.wrap}>
       {/* Changes page title visible on the header */}
       <Stack.Screen options={{ headerShown: false }} />
-        <Image
-          style={styles.logo}
-          source={require('../../assets/ltLogo.png')}
-          // placeholder={blurhash}
-          contentFit="contain"
-          transition={1000}
-        />
-        <Text style={styles.text}>
-          Lean Techniques Photo Album
-        </Text>
+      <Image
+        style={styles.logo}
+        source={require("../../assets/ltLogo.png")}
+        // placeholder={blurhash}
+        contentFit="contain"
+        transition={1000}
+      />
+      <Text style={styles.text}>Lean Techniques Photo Album</Text>
 
-        <FlatList
-          data={data}
-          // estimatedItemSize={20}
-          ItemSeparatorComponent={() => <View />} 
-          renderItem={(image) => (
-            <ImageCard
-              image={image.item}
-              onTap={() => null}
-            />
-          )}
-        />
+      <FlatList
+        data={data}
+        // estimatedItemSize={20}
+        ItemSeparatorComponent={() => <View />}
+        renderItem={(image) => <ImageCard image={image.item} onTap={() => null} />}
+      />
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
   wrap: {
-    display: 'flex',
-    flexDirection: 'column',
+    display: "flex",
+    flexDirection: "column",
     flexGrow: 1,
-    alignItems: 'center',
-    height: Dimensions.get('screen').height,
-    width: Dimensions.get('screen').width,
-    backgroundColor: '#fff'
+    alignItems: "center",
+    height: Dimensions.get("screen").height,
+    width: Dimensions.get("screen").width,
+    backgroundColor: "#fff",
   },
   text: {
     fontSize: 20,
-    fontWeight: "500"
+    fontWeight: "500",
   },
   imageCardContainer: {
     height: 300,
-    width: Dimensions.get('screen').width
+    width: Dimensions.get("screen").width,
   },
   logo: {
     height: 80,
-    width: Dimensions.get('screen').width - 20,
+    width: Dimensions.get("screen").width - 20,
   },
   image: {
     height: 150,
-    width: 150
+    width: 150,
   },
   imageWrap: {
-    display: 'flex',
-    flexDirection: 'column',
+    display: "flex",
+    flexDirection: "column",
     flexGrow: 1,
-    alignItems: 'center'
-  }
+    alignItems: "center",
+  },
 });
 
 export default Index;

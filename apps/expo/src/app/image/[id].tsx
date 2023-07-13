@@ -3,7 +3,7 @@ import { SplashScreen, Stack, useSearchParams } from "expo-router";
 
 import { api } from "~/utils/api";
 
-function Post() {
+function ImageDetails() {
   const { id } = useSearchParams();
   if (!id || typeof id !== "string") throw new Error("unreachable");
   const { data } = api.images.byId.useQuery({ id: 3 });
@@ -21,4 +21,4 @@ function Post() {
   );
 }
 
-export default Post;
+export default ImageDetails;

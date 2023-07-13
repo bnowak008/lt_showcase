@@ -1,11 +1,10 @@
 import React from "react";
-import { Dimensions, StyleSheet, View } from 'react-native';
+import { Dimensions, StyleSheet } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 
 import { TRPCProvider } from "~/utils/api";
-import { Image } from "expo-image";
 
 // This is the main layout of the app
 // It wraps your pages with the providers they need
@@ -32,12 +31,12 @@ const RootLayout = () => {
 
 const styles = StyleSheet.create({
   header: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: Dimensions.get('screen').width,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    width: Dimensions.get("screen").width,
     height: 100,
-    elevation: 1
+    elevation: 1,
   },
   logo: {
     width: 175,
