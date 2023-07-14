@@ -12,11 +12,9 @@ describe("imageRouter", () => {
     const ctx = await createInnerTRPCContext();
     const caller = appRouter.createCaller(ctx);
 
-    const input: inferProcedureInput<AppRouter["images"]["byId"]> = {
-      id: 3,
-    };
+    const input: inferProcedureInput<AppRouter["images"]["byId"]> = 3;
 
-    const result = await caller.images.byId({ id: input.id });
+    const result = await caller.images.byId(input);
 
     expect(result).toBeInstanceOf(Array);
     expect(result.length).toBeGreaterThan(0);

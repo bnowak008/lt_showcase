@@ -26,8 +26,7 @@ const RootLayout: React.FC<Props> = ({ children }) => {
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <body>
-        <Main className={heebo.className}>{children}</Main>
-            {children}
+          <Main className={heebo.className}>{children}</Main>
         </body>
     </html>
   )
