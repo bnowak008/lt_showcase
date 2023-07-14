@@ -1,18 +1,22 @@
-import { useState } from "react";
+"use client";
+
 import Image from "next/image";
 import styled from "@emotion/styled";
 
-import { api } from "~/utils/api";
+import { trpc } from "~/utils/api";
 import { NumericRangeInput } from "~/components/NumericRangInput";
-import { type NextPageWithLayout } from "~/test_pages/_app";
 
-export const HomeScreen: NextPageWithLayout = () => {
+import { useRouter } from 'next/navigation'
+
+export default function Page({ params: { id } }: { params: { id: string } }) {
+  const router = useRouter();
+  const albumId = Number(router);
+
   // default to random integer between 1 to 100:
-  const [albumId, setAlbumId] = useState<number>(Math.floor(Math.random() * 100) + 1);
-  const imagesQuery = api.images.byId.useQuery({ id: albumId }, { staleTime: Infinity });
+  const imagesQuery = trpc.images.byId.useQuery(+id);
 
   const handleAlbumIdChange = (num: number | undefined) => {
-    typeof num !== "undefined" && setAlbumId(num);
+    router.push(`/images/${num}`);
   };
 
   return (

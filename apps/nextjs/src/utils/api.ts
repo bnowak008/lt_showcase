@@ -1,3 +1,5 @@
+"use client";
+
 import { httpBatchLink, loggerLink } from "@trpc/client";
 import { createTRPCNext } from "@trpc/next";
 import superjson from "superjson";
@@ -10,7 +12,7 @@ const getBaseUrl = () => {
   return `http://localhost:3000`; // dev SSR should use localhost
 };
 
-export const api = createTRPCNext<AppRouter>({
+export const trpc = createTRPCNext<AppRouter>({
   config() {
     return {
       transformer: superjson,
@@ -22,6 +24,14 @@ export const api = createTRPCNext<AppRouter>({
           url: `${getBaseUrl()}/api/trpc`,
         }),
       ],
+      queryClientConfig: {
+        defaultOptions: {
+          queries: {
+            staleTime: Infinity,
+            refetchOnWindowFocus: false
+          }
+        }
+      }
     };
   },
   ssr: false,
